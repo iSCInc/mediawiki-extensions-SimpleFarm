@@ -48,6 +48,13 @@ $messages['dsb'] = array(
 	'simplefarm-desc' => 'Jadnore, ale mócne wikifarmowe rozšyrjenje bźez wjelikich konfiguraciskich bokow',
 );
 
+/** Spanish (Español)
+ * @author Armando-Martin
+ */
+$messages['es'] = array(
+	'simplefarm-desc' => 'Simple, pero potente extensión de granja wiki sin ninguna página de configuración sofisticada',
+);
+
 /** French (Français)
  * @author Gomoko
  */
