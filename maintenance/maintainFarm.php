@@ -113,7 +113,7 @@ class SimpleFarmerMaintenance extends Maintenance {
 		}
 		else {
 			// success!
-			$this->output( "\n{$prfx}Apparently, no error has occurred during command executions :-)\n" );
+			$this->output( "\n{$prfx}Apparently, no error has occured during command executions :-)\n" );
 		}
 	}
 }
