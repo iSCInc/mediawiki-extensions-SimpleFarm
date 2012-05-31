@@ -97,6 +97,13 @@ $messages['ia'] = array(
 	'simplefarm-desc' => 'Extension de ferma wiki simple ma potente sin paginas de configuration special',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'simplefarm-desc' => 'Semplice, ma potente estensione per wiki farm senza alcuna pagina fantasiosa per la configurazione',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
