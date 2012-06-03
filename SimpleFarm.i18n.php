@@ -97,7 +97,7 @@ $messages['ia'] = array(
 	'simplefarm-desc' => 'Extension de ferma wiki simple ma potente sin paginas de configuration special',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Beta16
  */
 $messages['it'] = array(
