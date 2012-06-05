@@ -104,6 +104,13 @@ $messages['it'] = array(
 	'simplefarm-desc' => 'Semplice, ma potente estensione per wiki farm senza alcuna pagina fantasiosa per la configurazione',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'simplefarm-desc' => 'E eijnfach, ävver kräftesch Projramm för ene Schtall vull Wikis ze verwallde, der ohne övverdrivve Sigge met  Enschtällonge.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
