@@ -26,7 +26,7 @@ $messages['qqq'] = array(
 	'simplefarm-desc' => '{{desc}}',
 );
 
-/** Asturian (Asturianu)
+/** Asturian (asturianu)
  * @author Xuacu
  */
 $messages['ast'] = array(
@@ -48,14 +48,14 @@ $messages['dsb'] = array(
 	'simplefarm-desc' => 'Jadnore, ale mócne wikifarmowe rozšyrjenje bźez wjelikich konfiguraciskich bokow',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  */
 $messages['es'] = array(
 	'simplefarm-desc' => 'Simple, pero potente extensión de granja wiki sin ninguna página de configuración sofisticada',
 );
 
-/** French (Français)
+/** French (français)
  * @author Gomoko
  */
 $messages['fr'] = array(
@@ -83,14 +83,14 @@ $messages['hsb'] = array(
 	'simplefarm-desc' => 'Jednore, ale mócne wikifarmowe rozšěrjenje bjez wulkich konfiguraciskich stronow',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dj
  */
 $messages['hu'] = array(
 	'simplefarm-desc' => 'Egyszerű, mégis hatékony wiki farm kiterjesztés csili-vili konfigurációs oldalak nélkül',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -125,7 +125,7 @@ $messages['lb'] = array(
 	'simplefarm-desc' => 'Einfach, an awer ëmfangräich Wiki-Farm-Erweiderung ouni komplex Konfiguratiounssäiten',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
@@ -147,7 +147,7 @@ $messages['pms'] = array(
 	'simplefarm-desc' => 'Sempia ma potenta estension ëd fatorìa wiki sensa gnun-a pàgina sbërlusenta ëd configurassion',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author Vox
  */
 $messages['uk'] = array(
