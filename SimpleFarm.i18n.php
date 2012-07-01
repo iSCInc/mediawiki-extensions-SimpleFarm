@@ -41,7 +41,7 @@ $messages['de'] = array(
 	'simplefarm-desc' => 'Ermöglicht den einfachen wie umfänglichen Betrieb einer Wikifarm, ohne dabei komplexe Konfigurationsseiten zu nutzen',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -62,7 +62,7 @@ $messages['fr'] = array(
 	'simplefarm-desc' => 'Simple mais puissante extension de ferme de wiki sans aucune page de configuration fantaisiste',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -76,7 +76,7 @@ $messages['he'] = array(
 	'simplefarm-desc' => 'הרחבה פשוטה, אבל חזקה, לניהול חוות ויקי ללא דפי הגדרות מורכבים',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
