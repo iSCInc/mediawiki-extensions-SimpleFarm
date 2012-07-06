@@ -147,6 +147,13 @@ $messages['pms'] = array(
 	'simplefarm-desc' => 'Sempia ma potenta estension ëd fatorìa wiki sensa gnun-a pàgina sbërlusenta ëd configurassion',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'simplefarm-desc' => 'Payak, ngunit makapangyarihang dugtong ng bukid ng wika na walang anumang magagarang mga pahina ng kumpigurasyon',
+);
+
 /** Ukrainian (українська)
  * @author Vox
  */
