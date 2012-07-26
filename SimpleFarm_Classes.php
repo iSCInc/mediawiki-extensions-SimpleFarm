@@ -15,7 +15,7 @@
  */
 class SimpleFarm {	
 	/**
-	 * If set to a farm member within '$egSimpleFarmMembers' array (see settings file) it meains that
+	 * If set to a farm member within '$egSimpleFarmMembers' array (see settings file) it means that
 	 * the wiki is not in maintenance mode right now.
 	 */
 	const MAINTAIN_OFF = false;
@@ -39,18 +39,19 @@ class SimpleFarm {
 	 * Returns the defined main member of the wiki farm.
 	 * If $wgSimpleFarmMainMemberDB has not been set yet, this will set $wgSimpleFarmMainMemberDB
 	 * to the first member in $wgSimpleFarmMembers
-	 * @return SimpleFarmMember or null if no match could be found
+	 * @return SimpleFarmMember|null null if no match could be found
 	 */
 	public static function getMainMember() {
 		global $egSimpleFarmMainMemberDB, $egSimpleFarmMembers;
 		
 		// if variable was not set in config, fill it with first farm member or return null if none is defined:
 		if( $egSimpleFarmMainMemberDB === null ) {
-			if( (int)$egSimpleFarmMembers )
+			if( (int)$egSimpleFarmMembers ) {
 				$egSimpleFarmMainMemberDB = $egSimpleFarmMembers[0]['db'];
-			else
+			} else {
 				return null;
-		}		
+			}
+		}
 		return SimpleFarmMember::loadFromDatabaseName( $egSimpleFarmMainMemberDB );	
 	}
 	
@@ -62,7 +63,7 @@ class SimpleFarm {
 	 * was called to initialise another wiki instead.
 	 * $wgSimpleFarmWikiSelectEnvVarName should contain its final value when first calling this.
 	 * 
-	 * @return SimpleFarmMember or null if no match was found
+	 * @return SimpleFarmMember|null null if no match could be found
 	 */
 	public static function getActiveMember() {		
 		global $IP, $wgCommandLineMode;
@@ -76,7 +77,7 @@ class SimpleFarm {
 		if( ! defined( 'SIMPLEFARM_ENVVAR' ) ) {
 			define( 'SIMPLEFARM_ENVVAR', $egSimpleFarmWikiSelectEnvVarName );		
 		}
-		// in commandline mode we check for environment variable to stelect a wiki:
+		// in commandline mode we check for environment variable to select a wiki:
 		if( $wgCommandLineMode ) {
 			/*
 			 * if we are in command-line mode but no wiki was selected
@@ -95,7 +96,7 @@ class SimpleFarm {
 			}			
 			return SimpleFarmMember::loadFromDatabaseName( $wikiEvn );
 		}
-		// farm member called via browser, find out which member via server name:
+		// farm member called via browser, find out which member via original address:
 		else {
 			// only interesting if redirect_url is set, otherwise unlikely to be used anyway
 			$currScriptPath = isset( $_SERVER['REDIRECT_URL'] ) ? $_SERVER['REDIRECT_URL'] : $_SERVER['SCRIPT_NAME'];
@@ -121,7 +122,7 @@ class SimpleFarm {
 			echo "</pre></br>" . $currScriptPath . "<br/>" . preg_replace( '%[\\/\\\]$%', '/.', $_SERVER['REDIRECT_URL'] ) . "<br/>" . $_SERVER['REQUEST_URI'] . "</body></html>";
 			die( 1 );
 			*/	
-			// walk all farm members and see whether it fullfils criteria to be the loaded one right now:
+			// walk all farm members and see whether it fulfils criteria to be the loaded one right now:
 			foreach( self::getMembers() as $member ) {
 				
 				switch( $member->getCfgMode() ) {
@@ -145,7 +146,7 @@ class SimpleFarm {
 						continue;
 				}
 			}			
-			return null; // no macht with configuration array!
+			return null; // no match with configuration array!
 		}
 	}
 	
@@ -177,8 +178,8 @@ class SimpleFarm {
 			}
 			else {
 				// wiki not found, try to call user defined callback function and try return value:
-				// (can't use hook-system here since it propably isn't loaded at this sage!)
-				global $egSimpleFarmErrorNoMemberFoundCallback;				
+				// (can't use hook-system here since it probably isn't loaded at this sage!)
+				global $egSimpleFarmErrorNoMemberFoundCallback;
 				
 				if( is_callable( $egSimpleFarmErrorNoMemberFoundCallback ) ) {
 					$wiki = call_user_func( $egSimpleFarmErrorNoMemberFoundCallback );
@@ -246,6 +247,8 @@ class SimpleFarm {
 		 *   if( file_exists( "$IP/wikiconfigs/$wgDBname.php" ) ) {
 		 *       include( "$IP/wikiconfigs/$wgDBname.php" );
 		 *   }
+		 *
+		 * NOTE: how about a global function here?
 		 */
 		return true;
 	}
@@ -397,7 +400,7 @@ class SimpleFarmMember {
 	 * 
 	 * @param User $user the user we want to know whether he is a maintainer right now.
 	 *        If not set, the information will be returned for the current user.
-	 *        This will only work after 'LocalSettings.php' since $wgUser is undefined ealrier!
+	 *        This will only work after 'LocalSettings.php' since $wgUser is undefined earlier!
 	 * 
 	 * @return boolean
 	 */
