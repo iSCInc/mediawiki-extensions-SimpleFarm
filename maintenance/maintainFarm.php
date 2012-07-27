@@ -30,6 +30,8 @@ class SimpleFarmerMaintenance extends Maintenance {
 		$this->addOption( 'farmonly', 'comma-separated list of wikis to select for doing some farming on (by database name)' );
 		$this->addOption( 'farmpreview', 'if set this will output all selected wikis for farming without running any further action' );
 		$this->addArg( 'command', 'the command-line command to execute for each selected farm member', false );
+		// TODO: add option to execute 'command' from mw root dir with PHP_BINARY (php 5.4). There is no nice way for
+		//       doing this in php 5.3 or earlier though.
 	}
 	
 	public function getDbType() {
@@ -41,7 +43,7 @@ class SimpleFarmerMaintenance extends Maintenance {
 		
 		$prfx = '~~ '; // prefix in front of each line to make an optical difference to pass through scripts
 		
-		$selected = SimpleFarm::getMembers();		
+		$selected = SimpleFarm::getMembers();
 		$totalMembers = count( $selected );
 		
 		// farmexclude:
@@ -104,7 +106,7 @@ class SimpleFarmerMaintenance extends Maintenance {
 				$failed++;
 			}
 		}
-		
+
 		$this->output( "\n\n{$prfx}Finished! All {$selectedMembers} selected 'Simple Farm' members have been maintained" );
 		
 		// check whether we had any errors along the way:
