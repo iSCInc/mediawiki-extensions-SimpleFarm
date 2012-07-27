@@ -100,41 +100,28 @@ class SimpleFarm {
 		else {
 			// only interesting if redirect_url is set, otherwise unlikely to be used anyway
 			$currScriptPath = isset( $_SERVER['REDIRECT_URL'] ) ? $_SERVER['REDIRECT_URL'] : $_SERVER['SCRIPT_NAME'];
-			/*
-			 * in case the script path was called directly and not some page within the directory,
-			 * just make sure to add '.' behind the last '/' before getting the directory name
-			 * '/bla/' returns '/', '/bla/.' returns '/bla' !
-			 */			
-			$currScriptPath = dirname( preg_replace( '%[\\/\\\]$%', '/.', $currScriptPath ) );
-			
-			/*
-			 * in case "<domain>/<uri>" without '/' after, the above will return '\' (windows)
-			 * or '/' (unix). Take the whole requested URI then since it could be the scriptpath
-			 * directory or just a file in the root dir...
-			 */
-			if( preg_match( '%[\\/\\\]$%', $currScriptPath ) )
-				$currScriptPath = $_SERVER['REDIRECT_URL'];
-			/*
-			echo $currScriptPath . "<br/>";			
-			echo "is_dir: " .  is_dir( $_SERVER['DOCUMENT_ROOT'] . $_SERVER['REDIRECT_URL'] ) . "<br/>";
-			echo "<html><body><pre>";
-			print_r( $_SERVER );
-			echo "</pre></br>" . $currScriptPath . "<br/>" . preg_replace( '%[\\/\\\]$%', '/.', $_SERVER['REDIRECT_URL'] ) . "<br/>" . $_SERVER['REQUEST_URI'] . "</body></html>";
-			die( 1 );
-			*/	
-			// walk all farm members and see whether it fulfils criteria to be the loaded one right now:
+
+			// in case of scriptpath, there could be several matching paths, including more specific deep paths.
+			// we have to get the most specific then and return it in the end
+			$qualifiedMembers = array();
+
+			// walk all farm members and see whether they fulfil criteria to be the loaded one right now:
 			foreach( self::getMembers() as $member ) {
 				
 				switch( $member->getCfgMode() ) {
 					
 					// configuration uses script path for this one to identify as selected:
-					case SimpleFarmMember::CFG_MODE_SCRIPTPATH:						
-						if( $member->getScriptPath() === $currScriptPath ) {							
-							return $member;
+					case SimpleFarmMember::CFG_MODE_SCRIPTPATH:
+						$memberScriptPath = $member->getScriptPath();
+						// member is qualified if its path is part of current path or equal:
+						if( strpos( $currScriptPath . '/', $memberScriptPath . '/' ) === 0 ) {
+							// remember member as qualified. The more specific (longer) the matching path, the
+							// more qualified that member is
+							$qualifiedMembers[ strlen( $memberScriptPath ) ] = $member;
 						}
 						break;
 						
-					// configuration uses a set of addresses to identifiy as selected:
+					// configuration uses a set of addresses to identify as selected:
 					case SimpleFarmMember::CFG_MODE_ADDRESS:
 						if( in_array( $_SERVER['HTTP_HOST'], $member->getAddresses(), true ) ) {
 							return $member;
@@ -145,7 +132,11 @@ class SimpleFarm {
 					case SimpleFarmMember::CFG_MODE_NONE:
 						continue;
 				}
-			}			
+			}
+			if( !empty( $qualifiedMembers ) ) {
+				// return member with the longest (most specific) path matching the current path:
+				return $qualifiedMembers[ max( array_keys( $qualifiedMembers ) ) ];
+			}
 			return null; // no match with configuration array!
 		}
 	}
@@ -507,7 +498,12 @@ class SimpleFarmMember {
 			global $wgScriptPath;
 			$scriptPath = $wgScriptPath;
 		}
-		return str_replace( "\\", "/", trim( $scriptPath ) );
+
+		// we don't want to tread Windows '\' differently, so replace
+		$scriptPath = str_replace( '\\', '/', trim( $scriptPath ) );
+
+		// ignore '/' in the end
+		return preg_replace( '%/$%', '', $scriptPath );
 	}
 	
 	/**
