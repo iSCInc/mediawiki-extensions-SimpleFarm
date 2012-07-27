@@ -11,7 +11,8 @@
  */
 
 require_once dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php';
-require_once dirname( __FILE__ ) . '/../SimpleFarm_Classes.php';
+require_once dirname( __FILE__ ) . '/../includes/SimpleFarm.php';
+require_once dirname( __FILE__ ) . '/../includes/SimpleFarmMember.php';
 
 /**
  * 'Simple Farm' maintenance handler
@@ -38,7 +39,7 @@ class SimpleFarmerMaintenance extends Maintenance {
 	public function execute() {
 		global $egSimpleFarmWikiSelectEnvVarName;
 		
-		$prfx = '~~ '; // prefix in front of each line to make an optical difference to passthru scripts
+		$prfx = '~~ '; // prefix in front of each line to make an optical difference to pass through scripts
 		
 		$selected = SimpleFarm::getMembers();		
 		$totalMembers = count( $selected );
@@ -82,8 +83,8 @@ class SimpleFarmerMaintenance extends Maintenance {
 		if( $this->getOption( 'farmpreview' ) !== null )
 			return; // no further action
 		
-		// finally, run the script for each:		
-		$script = $this->getArg( 0 );		
+		// finally, run the script for each:
+		$script = $this->getArg( 0 );
 		if( $script === null ) {
 			$this->error( "\n{$prfx}No maintaining command has been set! Argument <command> required!", true );
 		}
@@ -93,7 +94,7 @@ class SimpleFarmerMaintenance extends Maintenance {
 		$i = 0;
 		$failed = 0;
 		
-		foreach( $selected as $member ) {			
+		foreach( $selected as $member ) {
 			$i++;
 			$this->output( "\n\n{$prfx}({$i}/{$selectedMembers}) Running command for member '{$member->getName()}' ({$egSimpleFarmWikiSelectEnvVarName}={$member->getDB()})...\n\n" );
 			putenv( SIMPLEFARM_ENVVAR . "={$member->getDB()}" );
@@ -103,7 +104,7 @@ class SimpleFarmerMaintenance extends Maintenance {
 				$failed++;
 			}
 		}
-				
+		
 		$this->output( "\n\n{$prfx}Finished! All {$selectedMembers} selected 'Simple Farm' members have been maintained" );
 		
 		// check whether we had any errors along the way:

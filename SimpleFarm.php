@@ -7,7 +7,6 @@
  * 
  * Documentation: http://www.mediawiki.org/wiki/Extension:Simple_Farm
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Simple_Farm
- * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SimpleFarm
  * 
  * @version: 0.1rc
  * @license: ISC license
@@ -38,7 +37,9 @@ $wgExtensionMessagesFiles['SimpleFarm'] = ExtSimpleFarm::getDir() . '/SimpleFarm
 require ExtSimpleFarm::getDir() . '/SimpleFarm_Settings.php';
 
 // include required classes (not in this file because of maintenance script implications):
-require_once ExtSimpleFarm::getDir() . '/SimpleFarm_Classes.php';
+require_once ExtSimpleFarm::getDir() . '/includes/SimpleFarm.php';
+require_once ExtSimpleFarm::getDir() . '/includes/SimpleFarmMember.php';
+
 
 /*
  * It's no good, at that stage it is too late to set some global variables like $wgScriptPath
