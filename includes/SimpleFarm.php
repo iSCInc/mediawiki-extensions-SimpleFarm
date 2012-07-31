@@ -39,10 +39,10 @@ class SimpleFarm {
 	 */
 	public static function getMainMember() {
 		global $egSimpleFarmMainMemberDB, $egSimpleFarmMembers;
-		
+
 		// if variable was not set in config, fill it with first farm member or return null if none is defined:
 		if( $egSimpleFarmMainMemberDB === null ) {
-			if( (int)$egSimpleFarmMembers ) {
+			if( ! empty( $egSimpleFarmMembers ) ) {
 				$egSimpleFarmMainMemberDB = $egSimpleFarmMembers[0]['db'];
 			} else {
 				return null;
@@ -62,11 +62,11 @@ class SimpleFarm {
 	 * @return SimpleFarmMember|null null if no match could be found
 	 */
 	public static function getActiveMember() {		
-		global $IP, $wgCommandLineMode;
-		global $egSimpleFarmMembers, $egSimpleFarmMainMemberDB, $egSimpleFarmWikiSelectEnvVarName;
+		global $wgCommandLineMode;
+		global $egSimpleFarmWikiSelectEnvVarName;
 		
 		// return last initialised farm member if available:
-		if( self::$activeMember !== null ) {			
+		if( self::$activeMember !== null ) {
 			return self::$activeMember;
 		}
 		
@@ -83,13 +83,15 @@ class SimpleFarm {
 			$wikiEvn = getenv( SIMPLEFARM_ENVVAR );
 
 			if( $wikiEvn === false ) {
-				// running SimpleFarm maintenance script which will maintain all wikis:
-				if( self::$maintenanceIsRunning ) {
-					$wikiEvn = $egSimpleFarmMainMemberDB;
-				} else {
-					return null; // commandline-mode for specific wiki but no wiki was chosen!
+				$member = self::getMainMember();
+				if( ! $member ) {
+					return null; // no main member defined, probably no members defined at all
 				}
-			}			
+				// No member set, choose main member
+				echo "~~\n~~ Simple Farm NOTE: No farm member selected in \"" . SIMPLEFARM_ENVVAR . '" environment var.'
+					. "\n~~                   Auto-selected main member \"" . $member->getDB() . "\".\n~~\n";
+				return $member;
+			}
 			return SimpleFarmMember::loadFromDatabaseName( $wikiEvn );
 		}
 		// farm member called via browser, find out which member via original address:

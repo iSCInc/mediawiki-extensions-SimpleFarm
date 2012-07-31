@@ -53,7 +53,8 @@ $egSimpleFarmMembers = array();
  * If null, it will be set when SimpleFarm::init() was called. The default value is the first key
  * of $wgSimpleFarmMembers then.
  * This main member is important for maintenance since the generic maintenance script will connect
- * to the main member first to have full basic MediaWiki maintenance support.
+ * to the main member first to have full basic MediaWiki maintenance support. This member will also
+ * be chosen when direct command-line access is happening.
  *
  * @var String
  */
