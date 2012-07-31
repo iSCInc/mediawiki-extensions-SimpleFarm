@@ -21,6 +21,10 @@ class SimpleFarmMember {
 		$this->siteOpt = $siteOptions;
 	}
 
+	public function __toString() {
+		return $this->getDB(); // the members unique qualifier
+	}
+
 	/**
 	 * Load new SimpleFarmMember from its database name.
 	 * If not successful null will be returned.

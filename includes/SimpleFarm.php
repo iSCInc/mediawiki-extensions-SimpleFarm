@@ -88,8 +88,8 @@ class SimpleFarm {
 					return null; // no main member defined, probably no members defined at all
 				}
 				// No member set, choose main member
-				echo "~~\n~~ Simple Farm NOTE: No farm member selected in \"" . SIMPLEFARM_ENVVAR . '" environment var.'
-					. "\n~~                   Auto-selected main member \"" . $member->getDB() . "\".\n~~\n";
+				echo "~~\n~~ Simple Farm NOTE: No farm member selected in '" . SIMPLEFARM_ENVVAR . '\' environment var.'
+					. "\n~~                   Auto-selected main member '" . $member->getDB() . "'.\n~~\n";
 				return $member;
 			}
 			return SimpleFarmMember::loadFromDatabaseName( $wikiEvn );
@@ -163,7 +163,16 @@ class SimpleFarm {
 		// if wiki is not in farm list:
 		if( $wiki === null ) {
 			if( $wgCommandLineMode ) {
-				self::dieEarly( 'Environment variable "' . SIMPLEFARM_ENVVAR . '" must be set to an existing farm member database name to select a wiki in command-line mode!' );
+				// environment var not set properly (or no farm members)
+				$options = '';
+				foreach( self::getMembers() as $member ) {
+					$options .= '~~   * \'' . $member . '\' for \'' . $member->getName() . "'\n";
+				}
+				self::dieEarly(
+					"~~\n~~ Simple Farm ERROR:\n" .
+					'~~   Environment variable \'' . SIMPLEFARM_ENVVAR . "' not set to a valid farm member.\n" .
+					"~~   Valid members are:\n" . $options . '~~'
+				);
 			}
 			else {
 				// wiki not found, try to call user defined callback function and try return value:
