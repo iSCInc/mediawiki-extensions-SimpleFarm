@@ -104,6 +104,13 @@ $messages['it'] = array(
 	'simplefarm-desc' => 'Semplice, ma potente estensione per wiki farm senza alcuna pagina fantasiosa per la configurazione',
 );
 
+/** Japanese (日本語)
+ * @author Shirayuki
+ */
+$messages['ja'] = array(
+	'simplefarm-desc' => '派手な設定ページがなく簡素でありながら強力なウィキファーム拡張機能',
+);
+
 /** Korean (한국어)
  * @author 아라
  */
