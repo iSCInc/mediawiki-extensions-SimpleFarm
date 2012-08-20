@@ -9,7 +9,7 @@
  * @since 0.1
  * @author Daniel Werner < danweetz@web.de >
  */
-class SimpleFarm {	
+class SimpleFarm {
 	/**
 	 * If set to a farm member within '$egSimpleFarmMembers' array (see settings file) it means that
 	 * the wiki is not in maintenance mode right now.
@@ -48,7 +48,7 @@ class SimpleFarm {
 				return null;
 			}
 		}
-		return SimpleFarmMember::loadFromDatabaseName( $egSimpleFarmMainMemberDB );	
+		return SimpleFarmMember::loadFromDatabaseName( $egSimpleFarmMainMemberDB );
 	}
 	
 	/**
@@ -61,17 +61,17 @@ class SimpleFarm {
 	 * 
 	 * @return SimpleFarmMember|null null if no match could be found
 	 */
-	public static function getActiveMember() {		
+	public static function getActiveMember() {
 		global $wgCommandLineMode;
-		global $egSimpleFarmWikiSelectEnvVarName;
-		
+		global $egSimpleFarmWikiSelectEnvVarName, $egSimpleFarmMainMemberDB;
+
 		// return last initialised farm member if available:
 		if( self::$activeMember !== null ) {
 			return self::$activeMember;
 		}
 		
 		if( ! defined( 'SIMPLEFARM_ENVVAR' ) ) {
-			define( 'SIMPLEFARM_ENVVAR', $egSimpleFarmWikiSelectEnvVarName );		
+			define( 'SIMPLEFARM_ENVVAR', $egSimpleFarmWikiSelectEnvVarName );
 		}
 		// in commandline mode we check for environment variable to select a wiki:
 		if( $wgCommandLineMode ) {
@@ -85,6 +85,12 @@ class SimpleFarm {
 			if( $wikiEvn === false ) {
 				$member = self::getMainMember();
 				if( ! $member ) {
+					if( $egSimpleFarmMainMemberDB !== null ) {
+						echo "~~\n~~ Simple Farm ERROR:";
+						echo "~~\n~~   The configured main farm member \"" . $egSimpleFarmMainMemberDB .
+							"\" does not exist.\n";
+						echo "~~   You can change the main farm member in \$egSimpleFarmWikiSelectEnvVarName\n";
+					}
 					return null; // no main member defined, probably no members defined at all
 				}
 				// No member set, choose main member
@@ -171,7 +177,7 @@ class SimpleFarm {
 				self::dieEarly(
 					"~~\n~~ Simple Farm ERROR:\n" .
 					'~~   Environment variable \'' . SIMPLEFARM_ENVVAR . "' not set to a valid farm member.\n" .
-					"~~   Valid members are:\n" . $options . '~~'
+					"~~   Valid members are:\n" . $options . "~~\n"
 				);
 			}
 			else {
