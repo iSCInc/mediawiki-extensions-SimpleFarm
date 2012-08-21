@@ -5,7 +5,7 @@
  *
  * @since 0.1
  *
- * @file SimpleFarm.i18n.php
+ * @file
  * @ingroup SimpleFarm
  * @author Daniel Werner < danweetz@web.de >
  */

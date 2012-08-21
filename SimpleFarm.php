@@ -12,7 +12,7 @@
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  * 
- * @file SimpleFarm.php
+ * @file
  * @ingroup SimpleFarm
  */
 

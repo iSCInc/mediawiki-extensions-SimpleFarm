@@ -8,7 +8,7 @@
  * Changing one of these settings can be done by copying and placing
  * it in LocalSettings.php, AFTER the inclusion of 'Simple Farm'.
  *
- * @file SimpleFarm_Settings.php
+ * @file
  * @ingroup SimpleFarm
  * @since 0.1
  *

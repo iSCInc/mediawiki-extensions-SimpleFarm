@@ -3,7 +3,7 @@
  * Connect with one 'Simple Farm' farm member and start several maintenance
  * scripts from there to maintain several farm members at the same time.
  * 
- * @file maintainFarm.php
+ * @file
  * @ingroup Maintenance
  * @ingroup SimpleFarm
  * 
