@@ -167,4 +167,3 @@ $messages['tl'] = array(
 $messages['uk'] = array(
 	'simplefarm-desc' => 'Простие, але потужне wiki farm розширення без будь-яких сторінок кофігурації',
 );
-
