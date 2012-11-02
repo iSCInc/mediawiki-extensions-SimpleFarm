@@ -167,3 +167,10 @@ $messages['tl'] = array(
 $messages['uk'] = array(
 	'simplefarm-desc' => 'Простие, але потужне wiki farm розширення без будь-яких сторінок кофігурації',
 );
+
+/** Simplified Chinese (中文（简体）‎)
+ * @author Yfdyh000
+ */
+$messages['zh-hans'] = array(
+	'simplefarm-desc' => '简单但强大wiki农场扩展，没有任何花哨的配置页面',
+);
