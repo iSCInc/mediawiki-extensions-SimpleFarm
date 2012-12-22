@@ -154,6 +154,13 @@ $messages['pms'] = array(
 	'simplefarm-desc' => 'Sempia ma potenta estension ëd fatorìa wiki sensa gnun-a pàgina sbërlusenta ëd configurassion',
 );
 
+/** Brazilian Portuguese (português do Brasil)
+ * @author 555
+ */
+$messages['pt-br'] = array(
+	'simplefarm-desc' => 'Simples porém poderosa extensão para wikifarms, sem páginas complicadas de configurações',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
