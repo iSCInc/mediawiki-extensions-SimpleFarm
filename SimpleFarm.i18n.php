@@ -141,9 +141,10 @@ $messages['mk'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'simplefarm-desc' => "Eenvoudige maar toch krachtige wikifarm-uitbreiding zonder grootse configuratiepagina's",
+	'simplefarm-desc' => "Eenvoudige maar toch krachtige wikifarmuitbreiding zonder grootse configuratiepagina's",
 );
 
 /** Piedmontese (Piemontèis)
