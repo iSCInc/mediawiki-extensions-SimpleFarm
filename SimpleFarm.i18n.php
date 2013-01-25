@@ -162,6 +162,13 @@ $messages['pt-br'] = array(
 	'simplefarm-desc' => 'Simples porém poderosa extensão para wikifarms, sem páginas complicadas de configurações',
 );
 
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'simplefarm-desc' => "Facile, angore 'n'estenzione d'a fabbriche de uicchi putende senze pàggene de configurazione a uecchie",
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
