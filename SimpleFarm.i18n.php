@@ -21,9 +21,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author SPQRobin
+ * @author Shirayuki
  */
 $messages['qqq'] = array(
-	'simplefarm-desc' => '{{desc}}',
+	'simplefarm-desc' => '{{desc|name=Simple Farm|url=http://www.mediawiki.org/wiki/Extension:Simple_Farm}}',
 );
 
 /** Asturian (asturianu)
