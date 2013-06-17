@@ -190,3 +190,10 @@ $messages['uk'] = array(
 $messages['zh-hans'] = array(
 	'simplefarm-desc' => '简单但强大wiki农场扩展，没有任何花哨的配置页面',
 );
+
+/** Traditional Chinese (中文（繁體）‎)
+ * @author Justincheng12345
+ */
+$messages['zh-hant'] = array(
+	'simplefarm-desc' => '簡單而強大，無需花巧設置的維基農場擴充插件',
+);
