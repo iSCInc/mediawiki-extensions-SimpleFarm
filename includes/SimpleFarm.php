@@ -83,8 +83,8 @@ class SimpleFarm {
 			$wikiEvn = getenv( SIMPLEFARM_ENVVAR );
 
 			if( $wikiEvn === false ) {
-				$member = self::getMainMember();
-				if( ! $member ) {
+				$mainMember = self::getMainMember();
+				if( $mainMember === null ) {
 					if( $egSimpleFarmMainMemberDB !== null ) {
 						echo "~~\n~~ Simple Farm ERROR:";
 						echo "~~\n~~   The configured main farm member \"" . $egSimpleFarmMainMemberDB .
@@ -95,8 +95,8 @@ class SimpleFarm {
 				}
 				// No member set, choose main member
 				echo "~~\n~~ Simple Farm NOTE: No farm member selected in '" . SIMPLEFARM_ENVVAR . '\' environment var.'
-					. "\n~~                   Auto-selected main member '" . $member->getDB() . "'.\n~~\n";
-				return $member;
+					. "\n~~                   Auto-selected main member '" . $mainMember->getDB() . "'.\n~~\n";
+				return $mainMember;
 			}
 			return SimpleFarmMember::loadFromDatabaseName( $wikiEvn );
 		}
@@ -147,7 +147,7 @@ class SimpleFarm {
 	
 	/**
 	 * Initialises the selected member wiki of the wiki farm. This is only possible
-	 * once and must be done during localsettings configuration	 * 
+	 * once and must be done during localsettings configuration.
 	 * This will also modify some global variables, see SimpleFarm::initWiki() for details
 	 * 
 	 * @return boolean true
@@ -156,9 +156,9 @@ class SimpleFarm {
 		// don't allow multiple calls!
 		if( self::$activeMember !== null )
 			return true; // for hook use!
-		
+
 		global $egSimpleFarmMainMemberDB, $wgCommandLineMode;
-		
+
 		// set some main member if not set in config and farm has members:
 		if( $egSimpleFarmMainMemberDB === null ) {
 			$egSimpleFarmMainMemberDB = self::getMainMember()->getDB();
@@ -265,6 +265,18 @@ class SimpleFarm {
 	 */
 	public static function getMembers() {
 		global $egSimpleFarmMembers;
+
+		// Workaround for case where localsettings is not the entry point and not in global scope,
+		// so globals won't be configured. E.g. for handling evilMediaWikiBootstrap.php files used
+		// by some extensions when running PhpUnit tests via "phpunit" command from an extension
+		// directory.
+		// TODO: Rather than a call to SimpleFarm::init(), including a SimpleFarm.init.php should
+		//  trigger the farm initialization. This way, variables from the localsettings scope can
+		//  be mapped to some configuration objects which can then be passed to an actual init().
+		if( !$egSimpleFarmMembers ) {
+			return array();
+		}
+
 		$members = array();
 		foreach( $egSimpleFarmMembers as $member ) {
 			$members[ $member['db'] ] = new SimpleFarmMember( $member );
