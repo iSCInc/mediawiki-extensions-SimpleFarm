@@ -159,10 +159,12 @@ class SimpleFarm {
 
 		global $egSimpleFarmMainMemberDB, $wgCommandLineMode;
 
+		$mainMember = self::getMainMember();
+
 		// set some main member if not set in config and farm has members:
-		if( $egSimpleFarmMainMemberDB === null ) {
-			$egSimpleFarmMainMemberDB = self::getMainMember()->getDB();
-		}		
+		if( $egSimpleFarmMainMemberDB === null && $mainMember !== null ) {
+			$egSimpleFarmMainMemberDB = $mainMember->getDB();
+		}
 		// get selected member for this farm call:
 		$wiki = self::getActiveMember();
 		
