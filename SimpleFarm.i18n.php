@@ -170,6 +170,13 @@ $messages['roa-tara'] = array(
 	'simplefarm-desc' => "Facile, angore 'n'estenzione d'a fabbriche de uicchi putende senze pàggene de configurazione a uecchie",
 );
 
+/** Russian (русский)
+ * @author Okras
+ */
+$messages['ru'] = array(
+	'simplefarm-desc' => 'Простое, но мощное расширение для создания группы вики-проектов без каких-либо затейливых страниц настройки',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
