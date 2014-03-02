@@ -56,6 +56,13 @@ $messages['es'] = array(
 	'simplefarm-desc' => 'Simple, pero potente extensión de granja wiki sin ninguna página de configuración sofisticada',
 );
 
+/** Persian (فارسی)
+ * @author Armin1392
+ */
+$messages['fa'] = array(
+	'simplefarm-desc' => 'ساده، هنوز فرمت زمینه ویکی قدرتمند بدون هر صفحه پیکربندی فانتزی است',
+);
+
 /** French (français)
  * @author Gomoko
  */
