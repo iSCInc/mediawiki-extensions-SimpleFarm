@@ -4,14 +4,13 @@
  * are all using the same MediaWiki base installation and LocalSettings.php
  * Also comes with a useful maintenance script allowing to maintain several farm members
  * with just one command-line command.
- * 
+ *
  * Documentation: http://www.mediawiki.org/wiki/Extension:Simple_Farm
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Simple_Farm
- * 
- * @version: 0.1rc
+ *
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
- * 
+ *
  * @file
  * @ingroup SimpleFarm
  */
@@ -26,6 +25,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // language file for extension description:
+$wgMessagesDirs['SimpleFarm'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['SimpleFarm'] = ExtSimpleFarm::getDir() . '/SimpleFarm.i18n.php';
 /*
  * We don't use $wgExtensionMessagesFiles for more messages since most of this extension happens during
@@ -54,23 +54,23 @@ require_once ExtSimpleFarm::getDir() . '/includes/SimpleFarmMember.php';
  * 'Ext...' class representing the 'Simple Farm' extension.
  */
 class ExtSimpleFarm {
-	
+
 	/**
 	 * Version of the 'Simple Farm' extension.
-	 * 
+	 *
 	 * @since 0.1
 	 */
-	const VERSION = '0.1rc';
-	
+	const VERSION = '0.2.0';
+
 	/**
 	 * Returns the extensions base installation directory.
 	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static function getDir() {
-		static $dir = null;		
+		static $dir = null;
 		if( $dir === null ) {
 			$dir = dirname( __FILE__ );
 		}
