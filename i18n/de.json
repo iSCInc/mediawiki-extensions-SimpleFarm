@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "Daniel Werner",
-            "Kghbln"
-        ]
-    },
-    "simplefarm-desc": "Ermöglicht den einfachen wie umfänglichen Betrieb einer Wikifarm, ohne dabei komplexe Konfigurationsseiten zu nutzen"
+	"@metadata": {
+		"authors": [
+			"Daniel Werner",
+			"Kghbln"
+		]
+	},
+	"simplefarm-desc": "Ermöglicht den einfachen wie umfänglichen Betrieb einer Wikifarm, ohne dabei komplexe Konfigurationsseiten zu nutzen"
 }

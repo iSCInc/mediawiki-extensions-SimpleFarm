@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "SPQRobin",
-            "Shirayuki"
-        ]
-    },
-    "simplefarm-desc": "{{desc|name=Simple Farm|url=http://www.mediawiki.org/wiki/Extension:Simple_Farm}}"
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Shirayuki"
+		]
+	},
+	"simplefarm-desc": "{{desc|name=Simple Farm|url=http://www.mediawiki.org/wiki/Extension:Simple_Farm}}"
 }

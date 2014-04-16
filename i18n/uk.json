@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Vox"
-        ]
-    },
-    "simplefarm-desc": "Простие, але потужне wiki farm розширення без будь-яких сторінок кофігурації"
+	"@metadata": {
+		"authors": [
+			"Vox"
+		]
+	},
+	"simplefarm-desc": "Простие, але потужне wiki farm розширення без будь-яких сторінок кофігурації"
 }

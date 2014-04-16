@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "SPQRobin",
-            "Siebrand"
-        ]
-    },
-    "simplefarm-desc": "Eenvoudige maar toch krachtige wikifarmuitbreiding zonder grootse configuratiepagina's"
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Siebrand"
+		]
+	},
+	"simplefarm-desc": "Eenvoudige maar toch krachtige wikifarmuitbreiding zonder grootse configuratiepagina's"
 }
