@@ -2,8 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
-	"simplefarm-desc": "{{desc|name=Simple Farm|url=http://www.mediawiki.org/wiki/Extension:Simple_Farm}}"
+	"simplefarm-desc": "{{desc|name=Simple Farm|url=https://www.mediawiki.org/wiki/Extension:Simple_Farm}}"
 }
